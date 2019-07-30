@@ -7,13 +7,11 @@ import pathlib
 #globalne
 projectName = 'trello' #project name - result file with have this name
 sitemapFile = 'sitemap.txt' #file with sitemap (links in each line)
-apiKey =  'AIzaSyCXxFK9edUTCVmpU8LxE5FY0K6BWnMZNbI' #api key generated here https://developers.google.com/speed/docs/insights/v5/get-started
+apiKey =  'AIzaSyCXxFK9edUTCVmpU8LxE5FY0K6BWnMZNbI' #api key generated here https://developers.google.com/speed/docs/insights/v5/get-started. If deleted - API request limit can be easliy breached
 strategy = 'desktop' #mobile OR desktop
-category1 = 'performance'
-category2 = 'seo'
-category3 = 'accessibility'
-category4 = 'best-practices'
-threadsNumber = 15
+categories = ['performance', 'seo', 'accessibility', 'best-practices'] #categories to be tested and saved to file. These can be 'performance', 'seo', 'accessibility', 'best-practices'
+threadsNumber = 15 #number of requests sent asynchronically at once
+
 
 startTime = datetime.datetime.now()        
 print(f'Starting process - {startTime.strftime("%H:%M")}')
@@ -72,7 +70,13 @@ for num,line in enumerate(sitemap, start=1):
         if num==1:
             print(f'Processing {len(sitemap)} requests')
         # If no "strategy" parameter is included, the query by default returns desktop data.
-        url = f'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={line}&strategy={strategy}&category={category1}&category={category2}&category={category3}&category={category4}&key={apiKey}&num={num}'
+        url = f'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={line}&strategy={strategy}'
+        for cat in categories:
+            url += f'&category={cat}'
+        if apiKey:
+            url += f'&key={apiKey}'
+
+        url +=f'&num={num}'
         otto.enqueue(url, handle_url_response)
 
 otto.wait(timeout=0)  # waits until queue is empty or timeout is ellapsed
