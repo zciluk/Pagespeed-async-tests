@@ -4,10 +4,10 @@ from pprint import pprint
 from octopus import Octopus
 import pathlib
 
-#globalne
+#config variables
 projectName = 'trello' #project name - result file with have this name
 sitemapFile = 'sitemap.txt' #file with sitemap (links in each line)
-apiKey =  'AIzaSyCXxFK9edUTCVmpU8LxE5FY0K6BWnMZNbI' #api key generated here https://developers.google.com/speed/docs/insights/v5/get-started. If deleted - API request limit can be easliy breached
+apiKey =  '' #api key generated here https://developers.google.com/speed/docs/insights/v5/get-started. If deleted - API request limit can be easliy breached
 strategy = 'desktop' #mobile OR desktop
 categories = ['performance', 'seo', 'accessibility', 'best-practices'] #categories to be tested and saved to file. These can be 'performance', 'seo', 'accessibility', 'best-practices'
 threadsNumber = 15 #number of requests sent asynchronically at once
