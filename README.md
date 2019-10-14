@@ -37,11 +37,17 @@ After it is generated, you can paste it into the `apiKey` variable.
 ## Configuration variables
 
 By default, project is configured to test performance of www.trello.com website. You can configure it for own purposes:
+
 `projectName` - name of the project that will be written in results file title
+
 `sitemapFile` name of the sitemap placed in /sitemaps/ catalogue that will be read by app. Each line of the file should be a new address.
+
 `apiKey` API key from previous paragraph goes here. If empty, there can be limitations to simultaneous requests.
+
 `strategy` if empty - desktop. Can be set to either 'mobile' or 'desktop'. Mobile results are artificaly throttled to simulate slow device.
+
 `categories` for now - please does not change 😅
+
 `threadsNumber` number of requests sent asynchronically at once
 
 ## Ideas & Todos
