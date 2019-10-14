@@ -47,8 +47,13 @@ By default, project is configured to test performance of www.trello.com website.
 ## Ideas & Todos
 
 🚀 fix numeration of results
+
 🚀 make it more configurable (categories)
+
 🚀 support xml sitemaps
+
 🚀 upload the results to specific location
+
 🚀 graphicially formated results (xls, html?)
+
 🚀 compare results in time (graphs)
