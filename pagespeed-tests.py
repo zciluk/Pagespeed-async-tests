@@ -81,9 +81,6 @@ for num,line in enumerate(sitemap, start=1):
         otto.enqueue(url, handle_url_response)
 
 otto.wait(timeout=0)  # waits until queue is empty or timeout is ellapsed
-finishTime = datetime.datetime.now()
-completionTime = finishTime - startTime    
-print(f'FINISHED - {finishTime.strftime("%H:%M")}. Took {completionTime.seconds//3600}:{(completionTime.seconds//60)%60}:{(completionTime.seconds%3600)%60}' )
 print(f'Adding summary...' )
 resultsFile.close()
 getSummary = open(filePath, 'r').readlines()
@@ -106,3 +103,6 @@ updateSummary.write("\n")
 updateSummary.write("Total,  ,  Average First Contenful , Average First Interactive , Average Performance, Average SEO, Average Accessibility, Average Best-Practices\n")
 updateSummary.write(f'{sumResults},--,{"{0:.2f}".format(accContentfulPaint/sumResults)},{"{0:.2f}".format(accFirstInteractive/sumResults)},{"{0:.2f}".format(accPerformance/sumResults)},{"{0:.2f}".format(accSeo/sumResults)},{"{0:.2f}".format(accAccessability/sumResults)},{"{0:.2f}".format(accBestPractices/sumResults)}')
 updateSummary.close()
+finishTime = datetime.datetime.now()
+completionTime = finishTime - startTime    
+print(f'FINISHED - {finishTime.strftime("%H:%M")}. Took {completionTime.seconds//3600}:{(completionTime.seconds//60)%60}:{(completionTime.seconds%3600)%60}' )
